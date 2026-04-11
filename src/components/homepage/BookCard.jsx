@@ -1,8 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 const BookCard = ({ book }) => {
     return (
-        <div className="card p-5 shadow-sm border border-gray-200 space-y-4" key={book.bookId}>
+        <Link to={`/bookDetails/${book.bookId}`} className="card p-5 shadow-sm border border-gray-200 space-y-4" key={book.bookId}>
             <figure className='bg-base-300 h-80 p-5 rounded-2xl'>
                 <img
                     src={book.image}
@@ -26,7 +27,7 @@ const BookCard = ({ book }) => {
                     <p className='font-semibold text-lg text-gray-500'>{book.rating}⭐</p>
                 </div>
             </div>
-        </div>
+        </Link>
     );
 };
 

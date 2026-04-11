@@ -6,8 +6,9 @@ const BookDetails = () => {
     const { id } = useParams();
     const book = useLoaderData();
     //console.log(book);
-    const { handleMArkAsRead, storedBooks } = useContext(BookContext);
+    const { handleMArkAsRead, storedBooks, handleWishList, wishlist } = useContext(BookContext);
     console.log(storedBooks);
+    console.log(wishlist);
     return (
         <div>
             <div className="grid grid-cols-1 gap-10 md:grid-cols-2 bg-base-100 container mx-auto my-10">
@@ -64,7 +65,7 @@ const BookDetails = () => {
                     </div>
                     <div className="card-actions">
                         <button onClick={() => handleMArkAsRead(book)} className="btn text-black font-bold border border-gray-400">Mark as Read</button>
-                        <button className="btn bg-[#50B1C9] text-white">Add To Wishlist</button>
+                        <button onClick={()=> handleWishList(book)} className="btn bg-[#50B1C9] text-white">Add To Wishlist</button>
 
                     </div>
                 </div>

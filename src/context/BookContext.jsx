@@ -6,19 +6,30 @@ const BookProvider = ({ children }) => {
     const [wishlist, setWishlist] = useState([]);
     
     const handleMArkAsRead = (currentBook) => {
-        const isExisst = storedBooks.find((b) => b.bookId === currentBook.bookId);
-        if (isExisst) {            
+        const isExisstInStored = storedBooks.find((b) => b.bookId === currentBook.bookId);
+        if (isExisstInStored) {            
             toast.error("Book already marked as read!");
-        } else {
-            setStoredBooks([...storedBooks, currentBook]);
-            toast.success("Book marked as read!");
+            return;
         }
+        const isExisstInWishlist = wishlist.find((b) => b.bookId === currentBook.bookId);
+        if (isExisstInWishlist) {
+            setWishlist(wishlist.filter((b) => b.bookId !== currentBook.bookId));
+            //setStoredBooks([...storedBooks, currentBook]);
+            toast.info("Book removed from wishlist and added to read list!");
+        }
+        setStoredBooks([...storedBooks, currentBook]);
+        toast.success("Book marked as read!");
     };
 
     const handleWishList = (currentBook) => {
-        const isExisst = storedBooks.find((b) => b.bookId === currentBook.bookId);
-        if (isExisst) {            
-            toast.error("Book already marked as read!");
+        const isExisstInWishlist = wishlist.find((b) => b.bookId === currentBook.bookId);
+        const isExisstInStored = storedBooks.find((b) => b.bookId === currentBook.bookId);
+        if (isExisstInWishlist) {
+            toast.error("Book already in wishlist!");
+            return;
+        } else if (isExisstInStored) {
+            toast.error("Book is already marked as read!");
+            return;
         } else {
             setWishlist([...wishlist, currentBook]);
             toast.success("Book added to wishlist!");

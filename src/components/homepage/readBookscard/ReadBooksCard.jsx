@@ -6,7 +6,7 @@ const ReadBooksCard = ({ book }) => {
         <div>
             <div className='flex flex-col gap-10 md:flex-row md:gap-8 border border-gray-300 rounded-xl p-5'>
                 <div>
-                    <figure className='bg-base-300 rounded-2xl p-8'>
+                    <figure className='bg-base-300 rounded-2xl p-5'>
                         <img src={book.image} alt={book.title} />
                     </figure>
                 </div>
@@ -14,7 +14,7 @@ const ReadBooksCard = ({ book }) => {
                     <h3 className='text-2xl font-bold'>{book.bookName}</h3>
                     <p className='text-[16px] text-gray-500'>By: {book.author}</p>
                     <div className='my-4'>
-                        <span className="badge py-1 px-2 bg-base-200 font-semibold mr-5 rounded-2xl">Tags</span>
+                        <span className="badge py-1 px-2 font-semibold mr-5 rounded-2xl">Tags</span>
                         {book.tags.map((tag, index) => (
                             <span key={index} className="badge py-1 px-2 bg-green-50 text-green-500 font-semibold mr-5 rounded-2xl">
                                 {tag}
@@ -30,6 +30,11 @@ const ReadBooksCard = ({ book }) => {
                         <span>Page: {book.totalPages}</span>
                     </div>
                     <div className='divider my-0'></div>
+                    <div>
+                        <span className="badge py-1 px-3 bg-blue-100 text-blue-500  mr-5 rounded-2xl">Catagory: {book.category}</span>
+                        <span className="badge py-1 px-3 bg-[#FFAC33] text-[#915804]  mr-5 rounded-2xl">Rating: {book.rating}</span>
+                        <button className="badge py-1 px-3 bg-[#23BE0A] text-white  mr-5 rounded-2xl">View Details</button>
+                    </div>
                 </div>
             </div>
         </div>
